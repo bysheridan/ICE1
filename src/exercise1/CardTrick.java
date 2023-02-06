@@ -1,5 +1,7 @@
 package exercise1;
 
+import java.util.Scanner;
+
 /**
  * A class that fills a hand of 7 cards with random Card Objects and then asks the user to pick a card.
  * It then searches the array of cards for the match to the user's card. 
@@ -22,16 +24,31 @@ public class CardTrick {
 	    // System.out.printf("card %d is %d of %s.\n", i, hand[i].getValue(), hand[i].getSuit());
         }
 
-        // insert code to ask the user for Card value and suit, create their card
-        // and search the hand here. 
-        // Hint: You can ask for values 1 to 10, and then
-        //       11 for jack, 12 for queen, etc. (remember arrays are 0-based though)
-        //       1 for Hearts, 2 for Diamonds, etc. (remember arrays are 0-based though)
-        // 
-        // Then loop through the cards in the array to see if there's a match.
-        
-        // If the guess is successful, invoke the printInfo() method below.
-        
+	System.out.printf("Enter a card value and suit:\n");
+	System.out.printf("For example, 3 Hearts\n");
+	System.out.printf("Valid values: 1 (Ace), 2-10, 11 (Jack), 12 (Queen), 13 (King)\n");
+	System.out.printf("Valid suits: %s %s %s %s\n", Card.SUITS[0], Card.SUITS[1], Card.SUITS[2], Card.SUITS[3]);
+	Scanner keyboard = new Scanner(System.in);
+        int userValue = keyboard.nextInt();
+        String userSuit = keyboard.nextLine().replaceAll("\\s", "");
+
+	// System.out.printf("uservalue: %d\n", userValue);
+	// System.out.printf("usersuit: %s\n", userSuit);
+
+	boolean match = false;
+
+        for(int i = 0;i < hand.length; i++) {
+            if (hand[i].getValue() == userValue && hand[i].getSuit().equals(userSuit)) {
+		match = true;
+		System.out.printf("%d %s matches!\n", userValue, userSuit);
+            }
+	}
+
+	if (match) {
+                printInfo();
+	} else {
+		System.out.printf("No match in 7 cards!\n");
+	}
     }
 
     /**
