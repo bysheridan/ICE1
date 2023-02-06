@@ -7,6 +7,7 @@ package exercise1;
  *
  * @author dancye
  * @author Paul Bonenfant Jan 25, 2022 
+ * @author Brandon Yaeck Feb 5, 2023
  */
 public class CardTrick {
     
@@ -15,12 +16,10 @@ public class CardTrick {
         Card[] hand = new Card[7];
 
         for (int i = 0; i < hand.length; i++) {
-            Card card = new Card();
-            //card.setValue(insert call to random number generator here)
-            // 
-            //card.setSuit(Card.SUITS[insert call to random number between 0-3 here])
-            // Hint: You can use Random -> random.nextInt(n) to get a random number between 0 and n-1 (inclusive)
-            //       Don't worry about duplicates at this point
+            hand[i] = new Card();
+	    hand[i].setValue((int) (Math.random() * 13 + 1));
+	    hand[i].setSuit(Card.SUITS[(int) (Math.random() * 4)]);
+	    // System.out.printf("card %d is %d of %s.\n", i, hand[i].getValue(), hand[i].getSuit());
         }
 
         // insert code to ask the user for Card value and suit, create their card
